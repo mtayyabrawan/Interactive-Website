@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { height: 100vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg, #000000, #06b6d4); }
+    .auth-container { background: #fff; padding: 2rem; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); width: 100%; max-width: 360px; }
+    h2 { text-align: center; margin-bottom: 1.5rem; color: #333; }
+    .form-group { margin-bottom: 1rem; }
+    label { display: block; margin-bottom: 0.5rem; font-weight: bold; color: #444; }
+    input[type="text"], input[type="email"], input[type="password"] { width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem; transition: border-color 0.2s; }
+    input:focus { border-color: #4f46e5; outline: none; }
+    .btn { width: 100%; padding: 0.75rem; background: #4f46e5; border: none; border-radius: 8px; color: #fff; font-size: 1rem; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+    .btn:hover { background: #4338ca; }
+    .extra { margin-top: 1rem; text-align: center; font-size: 0.9rem; }
+    .extra a { color: #4f46e5; text-decoration: none; }
+    .extra a:hover { text-decoration: underline; }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.querySelector('form');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        if (!username || !password) {
+          alert('Please enter username and password');
+          return;
+        }
+        localStorage.setItem('loggedIn', 'true');
+        window.location.href = 'index.html';
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Sign In</h2>
+    <form>
+      <div class="form-group">
+        <label for="username">Username or Email</label>
+        <input type="text" id="username" placeholder="Enter your username or email" required />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required />
+      </div>
+      <button type="submit" class="btn">Sign In</button>
+    </form>
+    <div class="extra">
+      <p>Don’t have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+  </div>
+</body>
+</html>
+
